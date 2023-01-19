@@ -13,19 +13,24 @@ namespace API.Errors
         
        
 
-        public int StatusCode { get; set; }
+        public ApiResponse(int statusCode) 
+        {
+            this.StatusCode = statusCode;
+               
+        }
 
+        public int StatusCode { get; set; }
         public string Message  { get; set; }
 
         private string GetDefaultMesesageForStatusCode(int statusCode)
         {
-            return StatusCode switch
+            return statusCode switch
             {
                 400 => "A bad request, you have made",
                 401 => "Authorized, your are not",
                 404 => "Resource found, it was not" ,
                 500 => "Errors are the path to the dark side. Errors lead to anger. Anger leads to hate. Hate leads to career change",
-                _ => null
+                _  => null
 
             };
 
